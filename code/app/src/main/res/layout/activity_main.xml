@@ -1,18 +1,203 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context="MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Mood"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-</android.support.constraint.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".views.MainActivity">
+
+            <Button
+                android:id="@+id/filter_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/mood_history_view"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginLeft="10dp"
+
+                android:text="Filter"/>
+
+
+            <Button
+                android:id="@+id/show_all_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/mood_history_view"
+                app:layout_constraintStart_toEndOf="@id/filter_button"
+                android:layout_marginLeft="20dp"
+                android:onClick="showAllMoods"
+
+                android:text="Show all"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/mood_history_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="64dp"
+                android:layout_marginTop="48dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/filter_button"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottom_app_bar"
+            style="@style/Widget.MaterialComponents.BottomAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="6dp"
+            android:paddingTop="6dp"
+            app:backgroundTint="@color/colorPrimary"
+            android:layout_gravity="bottom"
+            app:fabAlignmentMode="center"
+            app:fabCradleMargin="6dp"
+            app:fabCradleRoundedCornerRadius="10dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- create Timeline menu item -->
+
+                <ImageButton
+                    android:id="@+id/timeline_menu_item"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:scaleType="fitStart"
+                    android:layout_marginLeft="8dp"
+                    android:src="@drawable/ic_featured_play_list_white_32dp"
+                    app:layout_constraintBottom_toTopOf="@id/timeline_textView"
+                    app:layout_constraintEnd_toStartOf="@+id/inbox_menu_item"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <TextView
+                    android:id="@+id/timeline_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Timeline"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintTop_toBottomOf="@id/timeline_menu_item"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+                <!-- create Inbox menu item -->
+
+                <ImageButton
+                    android:id="@+id/inbox_menu_item"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="#00000000"
+                    android:layout_marginLeft="12dp"
+                    android:scaleType="fitStart"
+                    android:src="@drawable/ic_inbox_white_32dp"
+                    app:layout_constraintBottom_toTopOf="@id/inbox_textView"
+                    app:layout_constraintEnd_toStartOf="@+id/placeholder"
+                    app:layout_constraintStart_toEndOf="@+id/timeline_menu_item"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/inbox_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Inbox"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintTop_toBottomOf="@+id/inbox_menu_item"
+                    android:layout_marginRight="3dp"
+                    app:layout_constraintStart_toStartOf="@+id/inbox_menu_item"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <!-- placeholder for center -->
+
+                <View
+                    android:id="@+id/placeholder"
+                    android:layout_width="60dp"
+                    android:layout_height="0dp"
+
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <!-- create Maps menu item -->
+
+                <ImageButton
+                    android:id="@+id/maps_menu_item"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:src="@drawable/ic_map_white_32dp"
+                    android:background="@color/colorPrimary"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/maps_textView"
+                    app:layout_constraintEnd_toStartOf="@+id/profile_menu_item"
+                    app:layout_constraintStart_toEndOf="@+id/placeholder" />
+
+                <TextView
+                    android:id="@+id/maps_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Maps"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintTop_toBottomOf="@+id/maps_menu_item"
+                    android:layout_marginRight="3dp"
+                    app:layout_constraintStart_toStartOf="@+id/maps_menu_item"
+                    app:layout_constraintEnd_toEndOf="@+id/maps_menu_item"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <!-- create Profile menu item -->
+
+                <ImageButton
+                    android:id="@+id/profile_menu_item"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_person_white_32dp"
+                    android:background="@color/colorPrimary"
+                    app:layout_constraintBottom_toTopOf="@+id/profile_textView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/maps_menu_item"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/profile_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Profile"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_menu_item"
+                    app:layout_constraintStart_toStartOf="@+id/profile_menu_item"
+                    app:layout_constraintEnd_toEndOf="@+id/profile_menu_item"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:onClick="createMoodEvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_add_white_72dp"
+            app:fabCustomSize="64dp"
+            app:layout_anchor="@+id/bottom_app_bar"
+            app:layout_anchorGravity="center_horizontal" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

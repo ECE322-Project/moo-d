@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:requiresFadingEdge="vertical"
+    android:fadingEdgeLength="30dp"
+
+    android:fillViewport="false"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+
+            <!-- EXIT BUTTON -->
+            <ImageButton
+                android:id="@+id/exit_button"
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="12dp"
+                android:background="@android:color/white"
+
+                android:contentDescription="Exit Button"
+                android:onClick="exit"
+
+                android:src="@drawable/ic_cancel_grey_24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <!-- GREETING MESSAGE -->
+            <TextView
+                android:id="@+id/greeting_message"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="26dp"
+
+                android:text="How are you feeling today?"
+                android:textSize="24sp"
+                android:textStyle="bold"
+
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/date_display" />
+
+
+            <!-- DATE AND TIME DISPLAY -->
+            <TextView
+                android:id="@+id/date_display"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="12dp"
+
+                android:text="MONTH DAY, YEAR"
+                android:textColor="#000000"
+                android:textSize="16sp"
+
+                android:drawableEnd="@drawable/ic_date_range_black_24dp"
+                android:drawablePadding="20dp"
+                android:gravity="center"
+
+                app:layout_constraintTop_toBottomOf="@id/greeting_message"
+                app:layout_constraintStart_toStartOf="@id/greeting_message"
+                app:layout_constraintEnd_toEndOf="@id/greeting_message"
+                app:layout_constraintBottom_toTopOf="@id/time_display" />
+
+            <!-- Time of mood event-->
+            <TextView
+                android:id="@+id/time_display"
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="10dp"
+
+                android:drawableEnd="@drawable/ic_time_black_24dp"
+                android:drawablePadding="20dp"
+                android:gravity="center"
+
+                android:text="HOUR : MINUTE"
+                android:textColor="#000000"
+                android:textSize="16sp"
+
+                app:layout_constraintTop_toBottomOf="@id/date_display"
+                app:layout_constraintStart_toStartOf="@id/date_display"
+                app:layout_constraintEnd_toEndOf="@id/date_display"
+                app:layout_constraintBottom_toTopOf="@id/mood_selection_buttons" />
+
+
+            <!-- MOOD SELECTION BUTTONS -->
+            <TextView
+                android:id="@+id/mood_message"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="12dp"
+
+                android:text="What kind of mood are you in?"
+                android:textSize="24sp"
+                android:textStyle="bold"
+
+                app:layout_constraintTop_toBottomOf="@id/time_display"
+                app:layout_constraintStart_toStartOf="@id/greeting_message"
+                app:layout_constraintEnd_toEndOf="@id/greeting_message"
+                app:layout_constraintBottom_toTopOf="@id/mood_selection_buttons" />
+
+            <GridLayout
+                android:id="@+id/mood_selection_buttons"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="10dp"
+
+                android:columnCount="2"
+                android:rowCount="3"
+                android:orientation="horizontal"
+                android:useDefaultMargins="true"
+                tools:context=".GridXMLActivity"
+
+                app:layout_constraintTop_toBottomOf="@id/time_display"
+                app:layout_constraintStart_toStartOf="@id/mood_message"
+                app:layout_constraintEnd_toEndOf="@id/mood_message"
+                app:layout_constraintBottom_toTopOf="@id/additional_info_message" >
+
+                <Button
+                    android:id="@+id/happy_mood_button"
+                    android:layout_row="0"
+                    android:layout_column="0"
+                    android:layout_gravity="fill"
+                    android:backgroundTint="@color/colorHappy"
+                    android:drawableLeft="@drawable/ic_happy_icon_24dp"
+                    android:onClick="selectMoodButton"
+                    android:text="HAPPY"
+                    android:textColor="#000000" />
+
+                <Button
+                    android:id="@+id/sad_mood_button"
+                    android:layout_row="0"
+                    android:layout_column="1"
+                    android:layout_gravity="fill"
+                    android:backgroundTint="@color/colorSad"
+                    android:drawableLeft="@drawable/ic_sad_icon_24dp"
+                    android:onClick="selectMoodButton"
+                    android:text="SAD"
+                    android:textColor="#000000" />
+
+                <Button
+                    android:id="@+id/surprised_mood_button"
+                    android:layout_row="1"
+                    android:layout_column="1"
+                    android:layout_gravity="fill"
+                    android:backgroundTint="@color/colorSurprised"
+                    android:drawableLeft="@drawable/ic_surprised_icon_24dp"
+                    android:onClick="selectMoodButton"
+                    android:text="SURPRISED"
+                    android:textColor="#000000" />
+
+                <Button
+                    android:id="@+id/afraid_mood_button"
+                    android:layout_row="1"
+                    android:layout_column="0"
+                    android:layout_gravity="fill"
+                    android:backgroundTint="@color/colorAfraid"
+                    android:drawableLeft="@drawable/ic_afraid_icon_24dp"
+                    android:onClick="selectMoodButton"
+                    android:text="AFRAID"
+                    android:textColor="#000000" />
+
+                <Button
+                    android:id="@+id/disgusted_mood_button"
+                    android:layout_row="2"
+                    android:layout_column="0"
+                    android:layout_gravity="fill"
+                    android:backgroundTint="@color/colorDisgusted"
+                    android:drawableLeft="@drawable/ic_disgusted_icon_24dp"
+                    android:onClick="selectMoodButton"
+                    android:text="DISGUSTED"
+                    android:textColor="#000000" />
+
+                <Button
+                    android:id="@+id/angry_mood_button"
+                    android:layout_row="2"
+                    android:layout_column="1"
+                    android:layout_gravity="fill"
+                    android:backgroundTint="@color/colorAngry"
+                    android:drawableLeft="@drawable/ic_angry_icon_24dp"
+                    android:onClick="selectMoodButton"
+                    android:text="ANGRY"
+                    android:textColor="#000000" />
+
+            </GridLayout>
+            <!-- END MOOD SELECTION BUTTONS -->
+
+
+            <!-- ADDITIONAL INFO MESSAGE -->
+            <TextView
+                android:id="@+id/additional_info_message"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="12dp"
+
+                android:text="Anything else you'd like to add?"
+                android:textSize="24sp"
+                android:textStyle="bold"
+
+                app:layout_constraintTop_toBottomOf="@id/mood_selection_buttons"
+                app:layout_constraintStart_toStartOf="@id/greeting_message"
+                app:layout_constraintEnd_toEndOf="@id/greeting_message"
+                app:layout_constraintBottom_toTopOf="@id/reason_entry" />
+
+
+            <!-- (OPTIONAL) REASON ENTRY -->
+            <EditText
+                android:id="@+id/reason_entry"
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="16dp"
+
+                android:hint="Reason for your mood (optional)"
+                android:inputType="text"
+
+                app:layout_constraintTop_toBottomOf="@id/additional_info_message"
+                app:layout_constraintStart_toStartOf="@id/additional_info_message"
+                app:layout_constraintEnd_toEndOf="@id/additional_info_message"
+                app:layout_constraintBottom_toTopOf="@id/social_situation_message" />
+
+
+            <!-- SOCIAL SITUATION ENTRY -->
+            <!-- SOCIAL SITUATION MESSAGE -->
+            <TextView
+                android:id="@+id/social_situation_message"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="16dp"
+
+                android:text="Right now, I'm with this many people:"
+                android:textSize="18sp"
+                android:textStyle="bold"
+
+                app:layout_constraintTop_toBottomOf="@id/reason_entry"
+                app:layout_constraintStart_toStartOf="@id/additional_info_message"
+                app:layout_constraintEnd_toEndOf="@id/additional_info_message"
+                app:layout_constraintBottom_toTopOf="@id/social_situation_buttons" />
+
+            <!-- SOCIAL SITUATION BUTTONS -->
+            <LinearLayout
+                android:id="@+id/social_situation_buttons"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="8dp"
+                android:orientation="vertical"
+
+                app:layout_constraintTop_toBottomOf="@id/social_situation_message"
+                app:layout_constraintStart_toStartOf="@id/additional_info_message"
+                app:layout_constraintEnd_toEndOf="@id/additional_info_message"
+                app:layout_constraintBottom_toTopOf="@id/add_photo_message" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <Button
+                        android:id="@+id/social_button_zero"
+
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginEnd="2dp"
+
+                        android:onClick="selectSocialSituationButton"
+                        android:text="0"
+                        android:backgroundTint="@android:color/darker_gray" />
+
+                    <Button
+                        android:id="@+id/social_button_one"
+
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginStart="2dp"
+                        android:layout_marginEnd="2dp"
+
+                        android:onClick="selectSocialSituationButton"
+                        android:text="1"
+                        android:backgroundTint="@android:color/darker_gray" />
+
+                    <Button
+                        android:id="@+id/social_button_two_plus"
+
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginStart="2dp"
+                        android:layout_marginEnd="2dp"
+
+                        android:onClick="selectSocialSituationButton"
+                        android:text="2+"
+                        android:backgroundTint="@android:color/darker_gray" />
+
+                    <Button
+                        android:id="@+id/social_button_crowd"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginStart="2dp"
+                        android:layout_marginEnd="2dp"
+
+                        android:onClick="selectSocialSituationButton"
+                        android:text="A Crowd"
+                        android:backgroundTint="@android:color/darker_gray" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/social_button_na"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginStart="2dp"
+
+                    android:layout_gravity="center"
+
+                    android:onClick="selectSocialSituationButton"
+                    android:text="N/A"
+                    android:backgroundTint="@android:color/darker_gray" />
+
+            </LinearLayout>
+            <!-- END SOCIAL SITUATION ENTRY -->
+
+
+            <!-- (OPTIONAL) ADD PHOTO -->
+            <TextView
+                android:id="@+id/add_photo_message"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="16dp"
+
+                android:text="Add a photo (optional):"
+                android:textSize="18sp"
+                android:textStyle="bold"
+
+                app:layout_constraintTop_toBottomOf="@id/social_situation_buttons"
+                app:layout_constraintStart_toStartOf="@id/additional_info_message"
+                app:layout_constraintEnd_toStartOf="@id/add_photo_button"
+                app:layout_constraintBottom_toTopOf="@id/user_photo_preview"/>
+
+            <ImageButton
+                android:id="@+id/add_photo_button"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:background="@android:color/white"
+
+                android:onClick="addPhoto"
+                android:src="@drawable/ic_image_black_24dp"
+                app:layout_constraintBottom_toBottomOf="@id/add_photo_message"
+                app:layout_constraintEnd_toEndOf="@id/additional_info_message"
+                app:layout_constraintStart_toEndOf="@id/add_photo_message"
+                app:layout_constraintTop_toTopOf="@id/add_photo_message" />
+
+
+            <!-- USER PHOTO PREVIEW (dynamically uses user_photo_preview.xml) -->
+            <LinearLayout
+                android:id="@+id/user_photo_preview"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="horizontal"
+
+                app:layout_constraintTop_toBottomOf="@id/add_photo_message"
+                app:layout_constraintStart_toStartOf="@id/additional_info_message"
+                app:layout_constraintEnd_toEndOf="@id/additional_info_message"
+                app:layout_constraintBottom_toTopOf="@id/location_button" >
+
+
+            </LinearLayout>
+            <!-- END ADD PHOTO -->
+
+
+            <!-- LOCATION ENTRY -->
+            <Button
+                android:id="@+id/location_button"
+
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="24dp"
+
+                android:drawableLeft="@drawable/ic_near_me_black_24dp"
+
+                android:gravity="center"
+                android:onClick="getLocation"
+
+                android:text="Use Location (optional)"
+                app:layout_constraintBottom_toTopOf="@id/save_mood_event_button"
+                app:layout_constraintEnd_toEndOf="@id/mood_selection_buttons"
+                app:layout_constraintStart_toStartOf="@id/mood_selection_buttons"
+                app:layout_constraintTop_toBottomOf="@id/user_photo_preview" />
+
+
+            <!-- CREATE MOOD EVENT BUTTON -->
+            <Button
+                android:id="@+id/save_mood_event_button"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="16dp"
+
+                android:onClick="saveMoodEvent"
+
+                android:text="Save Mood Event"
+                app:layout_constraintBottom_toTopOf="@id/delete_mood_event_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/location_button" />
+
+            <!-- CREATE MOOD EVENT BUTTON -->
+            <Button
+                android:id="@+id/delete_mood_event_button"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+
+                android:onClick="deleteMoodEvent"
+
+                android:text="Delete Mood Event"
+                android:backgroundTint="@android:color/holo_red_dark"
+
+                android:visibility="gone"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/save_mood_event_button" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

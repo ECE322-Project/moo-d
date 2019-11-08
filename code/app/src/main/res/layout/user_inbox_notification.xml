@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <!-- "New Follow Request" TextView -->
+
+       <TextView
+           android:id="@+id/follow_request_notification"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+
+           app:layout_constraintTop_toTopOf="parent"
+           app:layout_constraintStart_toStartOf="parent"
+
+           android:textStyle="bold"
+           android:textSize="18sp"
+           android:textColor="#000000"
+           android:text="New follow request"/>
+
+        <TextView
+            android:id="@+id/follow_request_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintTop_toBottomOf="@id/follow_request_notification"
+            app:layout_constraintStart_toStartOf="@id/follow_request_notification"
+            android:layout_marginTop="6dp"
+
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:text="moo_d_friend"/>
+
+        <TextView
+            android:id="@+id/follow_request_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintTop_toTopOf="@id/follow_request_username"
+            app:layout_constraintBottom_toBottomOf="@id/follow_request_username"
+            app:layout_constraintStart_toEndOf="@id/follow_request_username"
+            android:layout_marginStart="5dp"
+
+            android:textColor="#000000"
+            android:text="would like permission to view your posts."/>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

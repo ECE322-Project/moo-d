@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- This is a mood event for FOLLOWED USERS. For the user's own mood events, refer to
+    mood_event.xml -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <!-- Emoticon representing user's mood -->
+
+        <ImageView
+            android:id="@+id/user_emotion_imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="user mood icon"
+            android:src="@drawable/ic_happy_icon_24dp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <!-- User name, colored and bolded -->
+
+        <TextView
+            android:id="@+id/user_name_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="moo_d_friend"
+            android:textColor="#0066CC"
+            android:textStyle="bold"
+
+            app:layout_constraintBottom_toBottomOf="@id/user_emotion_imageView"
+            app:layout_constraintStart_toEndOf="@id/user_emotion_imageView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <!-- "is feeling" text -->
+
+        <TextView
+            android:id="@+id/is_feeling_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="is feeling"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="@id/user_emotion_imageView"
+
+            app:layout_constraintStart_toEndOf="@id/user_name_textView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <!-- user mood text, colored and bolded (color should reflect mood color) -->
+
+        <TextView
+            android:id="@+id/user_mood_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="happy"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+
+            app:layout_constraintBottom_toBottomOf="@id/user_emotion_imageView"
+            app:layout_constraintStart_toEndOf="@id/is_feeling_textView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <!-- period, just to keep from having to set text for user_mood_textView to "<mood>." -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="."
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="@id/user_emotion_imageView"
+
+            app:layout_constraintStart_toEndOf="@id/user_mood_textView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <!-- EDIT BUTTON -->
+
+        <ImageButton
+            android:id="@+id/unfollow_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/user_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/user_image"
+            android:layout_marginRight="8dp"
+
+            android:contentDescription="unfollow_button"
+            android:background="#00000000"
+            android:src="@drawable/ic_remove_gray_24dp"/>
+
+
+
+
+
+        <!-- DATE AND TIME INFO -->
+
+        <TextView
+            android:id="@+id/date_time_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="5dp"
+            android:text="November 02, 2019 at 1:22 PM"
+            android:textSize="12dp"
+
+            app:layout_constraintStart_toStartOf="@id/user_emotion_imageView"
+            app:layout_constraintTop_toBottomOf="@id/user_emotion_imageView" />
+
+
+        <!-- NUMBER OF PEOPLE -->
+
+        <ImageView
+            android:id="@+id/num_people_imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:contentDescription="social icon"
+            android:src="@drawable/ic_activity_people_black_24dp"
+
+            app:layout_constraintStart_toStartOf="@id/date_time_textView"
+            app:layout_constraintTop_toBottomOf="@id/date_time_textView" />
+
+        <TextView
+            android:id="@+id/num_people_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:text="1 person"
+            android:textColor="#000000"
+            android:textSize="12dp"
+
+            app:layout_constraintBottom_toBottomOf="@id/num_people_imageView"
+            app:layout_constraintStart_toEndOf="@id/num_people_imageView"
+            app:layout_constraintTop_toTopOf="@id/num_people_imageView" />
+
+
+        <!-- LOCATION -->
+
+        <ImageView
+            android:id="@+id/location_icon_imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:contentDescription="location icon"
+            android:src="@drawable/ic_near_me_black_24dp"
+            app:layout_constraintBottom_toBottomOf="@id/num_people_imageView"
+
+            app:layout_constraintStart_toEndOf="@id/num_people_textView"
+            app:layout_constraintTop_toTopOf="@id/num_people_imageView" />
+
+        <TextView
+            android:id="@+id/location_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="University of Alberta"
+            android:textColor="#000000"
+            android:textSize="12dp"
+
+            app:layout_constraintBottom_toBottomOf="@id/location_icon_imageView"
+            app:layout_constraintStart_toEndOf="@id/location_icon_imageView"
+            app:layout_constraintTop_toTopOf="@id/location_icon_imageView" />
+
+
+        <!-- USER REASON -->
+
+        <TextView
+            android:id="@+id/user_reason_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Going to a party!"
+            android:textColor="#000000"
+
+            android:textSize="13dp"
+            android:textStyle="italic"
+            app:layout_constraintStart_toStartOf="@id/num_people_imageView"
+            app:layout_constraintTop_toBottomOf="@id/num_people_imageView" />
+
+
+        <!-- USER PHOTO -->
+
+        <ImageView
+            android:id="@+id/user_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/unfollow_button"
+            app:layout_constraintBottom_toBottomOf="@id/user_reason_textView"
+            app:layout_constraintStart_toEndOf="@id/location_textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="16dp"
+
+            android:contentDescription="user image"
+            android:src="@drawable/ic_image_black_64dp"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

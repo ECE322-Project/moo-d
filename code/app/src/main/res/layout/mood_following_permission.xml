@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp">
+
+
+        <!-- CANCEL BUTTON -->
+
+        <ImageButton
+            android:id="@+id/cancel_permission_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/follow_event_title"
+
+            android:background="#00000000"
+            android:contentDescription="cancel button"
+            android:src="@drawable/ic_cancel_grey_24dp"/>
+
+        <!-- PERMISSION TEXT -->
+
+        <TextView
+            android:id="@+id/follow_event_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintTop_toBottomOf="@id/cancel_permission_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"
+
+
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:text="New follow request"/>
+
+        <TextView
+            android:id="@+id/allow_textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintTop_toBottomOf="@id/follow_event_title"
+            app:layout_constraintStart_toStartOf="@id/follow_event_title"
+            app:layout_constraintEnd_toStartOf="@id/requesting_username"
+            android:layout_marginTop="12dp"
+
+            android:textColor="#000000"
+            android:text="Allow"/>
+
+        <TextView
+            android:id="@+id/requesting_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintTop_toTopOf="@id/allow_textView1"
+            app:layout_constraintBottom_toBottomOf="@id/allow_textView1"
+            app:layout_constraintStart_toEndOf="@id/allow_textView1"
+            app:layout_constraintEnd_toStartOf="@id/allow_textView2"
+            android:layout_marginStart="5dp"
+
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            android:text="moo_d_friend"/>
+
+        <TextView
+            android:id="@+id/allow_textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintTop_toTopOf="@id/allow_textView1"
+            app:layout_constraintBottom_toBottomOf="@id/allow_textView1"
+            app:layout_constraintStart_toEndOf="@id/requesting_username"
+            app:layout_constraintEnd_toEndOf="@id/follow_event_title"
+            android:layout_marginStart="5dp"
+
+            android:textColor="#000000"
+            android:text="to view your"/>
+
+        <TextView
+            android:id="@+id/allow_textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintTop_toBottomOf="@id/allow_textView1"
+            app:layout_constraintStart_toStartOf="@id/follow_event_title"
+            app:layout_constraintEnd_toEndOf="@id/follow_event_title"
+            android:layout_marginTop="8dp"
+
+            android:textColor="#000000"
+            android:text="current and future posts?"/>
+
+
+        <!-- ALLOW/DENY BUTTONS -->
+
+        <Button
+            android:id="@+id/allow_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/allow_textView3"
+            app:layout_constraintStart_toStartOf="@id/follow_event_title"
+            app:layout_constraintEnd_toEndOf="@id/follow_event_title"
+            android:layout_marginTop="16dp"
+
+            android:text="Allow"/>
+
+
+        <Button
+            android:id="@+id/deny_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/allow_button"
+            app:layout_constraintStart_toStartOf="@id/follow_event_title"
+            app:layout_constraintEnd_toEndOf="@id/follow_event_title"
+            android:layout_marginTop="16dp"
+
+            android:text="Deny"/>
+
+
+        <!-- "We won't tell them if you deny" -->
+
+
+        <TextView
+            android:id="@+id/deny_reassurance_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/deny_button"
+            app:layout_constraintStart_toStartOf="@id/follow_event_title"
+            app:layout_constraintEnd_toEndOf="@id/follow_event_title"
+            android:layout_marginTop="18dp"
+
+            android:textSize="13sp"
+            android:textColor="#000000"
+            android:text="(We won't tell them if you deny.)"/>
+
+
+
+
+
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</LinearLayout>

@@ -13,5 +13,16 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-    - name: Build with Gradle
-      run: ./code/gradlew build
+    - name: git secret
+      run: |
+        git clone https://github.com/sobolevn/git-secret.git git-secret
+        cd git-secret && make build
+        PREFIX="/usr/local" sudo make install
+        cd ..
+        gpg --import <(echo "${{ secrets.GITHUB_GPG_SECRET }}")
+        git secret reveal
+    - name: Build with Gradle and Unit Test
+      working-directory: ./code
+      run: ./gradlew build
+    - name: Hide secret
+      run: git secret hide -d
