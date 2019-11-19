@@ -1,23 +1,24 @@
 \subsection{Unit Tests}
 Some unit tests were created in a white box testing manner.
-These tests were written using JUnit. 
+These tests were written using JUnit.
 \url{https://developer.android.com/training/testing/unit-testing/local-unit-tests}
 
-Currently, we're testing \dots things \dots
-
-Currently, the code coverage is \dots. We aim to reach \dots.
-
-\lipsum[0]
+Currently we have unit tests testing the constructor of MoodEvents, as well as several logical methods from converting database strings to moods.
 
 
-\subsection{UI Tests}
-Automated user interface tests were created using the Espresso framework.
+
+\subsection{Integration Tests}
+
+Most of the functionality of our app is displaying data from a database,
+testing how things are displayed is hard to do in unit tests. So, for this we
+used integration tests. For the most part, a automated user interface testing
+tool called Espresso was used.
 \url{https://developer.android.com/training/testing/espresso}
 
 Currently, we have tests for the app's functionality to add a mood event.
-We check each case of adding a mood event, making sure that an error 
+We check each case of adding a mood event, making sure that an error
 dialog is shown if not enough information is shown, and testing the
-different optional imputs. For example, we have a test for just selecting
+different optional inputs. For example, we have a test for just selecting
 the mood, another which does that and adds a comment. There are also tests
 for adding moods where the user's location is recorded, and where the test
 selects the number of people the user was hanging out with.
@@ -26,13 +27,27 @@ after entering the moods. For example, if the user entered `HAPPY', that
 must be shown. Additionally, if the user selected `ANGRY', and entered
 a comment, that comment should also be shown. If the location was entered,
 then NaN should not be shown as a coordinate.
-\todo{should I add a test which combines everything mentioned above?}
 
 At the end of each test, the mood is deleted, so the delete functionality
 is also covered by these tests.
 
-The UI test for filtering moods is mostly done, but not quite yet.
+Another functionality our app has is filtering the UI to show only moods of a
+specific type. To test this, we have an integration test that does this. This
+test will create a 21 moods of various types then will return to the mood
+viewing screen. At this point it opens up the filter UI, and selects a filter
+state. It then compares the actual moods displayed to the number of moods it
+expected to be displayed. It will then repeat this 7 times will different
+filter states. It does make sure every single mood type is visible at least
+once.
 
-\todo{maybe a screenshot would be useful for explaining??}
+
+\subsection{User Acceptance Testing}
+
+The user acceptance testing took the form of a live demo.
+We have done a bunch of user acceptance testing. A large part of our manual
+testing has been in this form. The functionality for adding moods, deleting
+moods, editing moods, viewing moods, and filtering moods have all passed user
+acceptance testing.
+
 
 
