@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+  <head>
+	<meta name="generator" content="Hugo 0.56.3" />
+    <meta charset="utf-8">
+<title>What the internet might look like on Mars 🚀</title>
+
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="/reveal-js/css/reveal.css"><link rel="stylesheet" href="/reveal-js/css/theme/black.css" id="theme">
+<link rel="stylesheet" href="/highlight-js/default.min.css">
+    
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+  
+<section>
+
+<h1 id="what-the-internet-might-look-like-on-mars">What the internet might look like on Mars 🚀</h1>
+
+<p>A quick look at the distributed web</p>
+
+</section><section>
+
+<h2 id="how-does-the-internet-work-today">How does the internet work today?</h2>
+
+</section><section>
+
+<p>(I&rsquo;m skipping a lot of details here, but)</p>
+
+<ol>
+<li><p>enter some domain, like <a href="https://google.ca">https://google.ca</a></p></li>
+
+<li><p>ask a DNS server which IP address that points to</p></li>
+
+<li><p>connect to google&rsquo;s servers and you see their website 🎉</p></li>
+</ol>
+
+<!-- fade this -->
+
+</section><section>
+
+<section data-shortcode-section>
+<p>We ask where a server is,</p>
+
+<p>so that we can find content.</p>
+
+</section><section>
+
+<h2 id="what-s-wrong-with-this">What&rsquo;s wrong with this?</h2>
+
+<p>notes: the internet is pretty darn reliable as is today.
+although the address is the same, the content can change any time, or even disappear</p>
+
+</section><section>
+
+<p>What if instead 🤔&hellip;</p>
+
+<h2 id="we-ask-who-has-the-content-i-m-looking-for">We ask &ldquo;who has the content I&rsquo;m looking for?&rdquo;</h2>
+
+<p>One such protocol is</p>
+
+<h1 id="ipfs">IPFS</h1>
+
+<p>or the Inter-Planetary File System</p>
+
+</section>
+
+</section>
+
+<!-- this brings us to -->
+
+<!-- ![](/images/graph.webp) -->
+
+
+<section data-noprocess data-shortcode-slide
+      data-background-image="/images/graph.webp">
+  
+
+</section><section>
+
+<!-- benefits -->
+
+<ol>
+<li>More resilient</li>
+<li>(theoretically) faster</li>
+<li>more practical for Mars 😂</li>
+</ol>
+
+</section><section>
+
+<p><a href="https://ipfs.io/ipfs/">https://ipfs.io/ipfs/</a>
+QmNURh26yenpqK5hK3ahRZhQJsaUttumepjtRWiVZXhnN1/</p>
+
+<p>⬆ that&rsquo;s a hash</p>
+
+<h2 id="here-s-an-actual-link"><!-- here's an actual link --></h2>
+
+<p>You might have seen hashes without realizing it.</p>
+
+<p>Torrents?</p>
+
+</section><section>
+
+<p>Let&rsquo;s upload a file to IPFS!</p>
+
+<p><img src="/images/catto.jpg" alt="" /></p>
+
+</section><section>
+
+<p>How are larger files stored? In chunks with  /blockchain/</p>
+
+</section><section>
+
+<p>The hash is permanent, how can we update a file?
+IPNS solves this problem by acting like a DNS server
+However, currently, it&rsquo;s slow</p>
+
+</section><section>
+
+<p>Conclusion</p>
+
+<ul>
+<li>This won&rsquo;t allow you to pwn Earth n00bs in Fortnite while you are on Mars</li>
+</ul>
+</section>
+
+  
+
+
+</div>
+      
+
+    </div>
+<script type="text/javascript" src=/reveal-hugo/object-assign.js></script>
+
+<a href="/reveal-js/css/print/" id="print-location" style="display: none;"></a>
+<script type="text/javascript">
+  var printLocationElement = document.getElementById('print-location');
+  var link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.href = printLocationElement.href + (window.location.search.match(/print-pdf/gi) ? 'pdf.css' : 'paper.css');
+  document.getElementsByTagName('head')[0].appendChild(link);
+</script>
+
+<script type="application/json" id="reveal-hugo-site-params">null</script>
+<script type="application/json" id="reveal-hugo-page-params">null</script>
+
+<script src="/reveal-js/lib/js/head.min.js"></script>
+<script src="/reveal-js/js/reveal.js"></script>
+
+<script type="text/javascript">
+  
+  
+  function camelize(map) {
+    if (map) {
+      Object.keys(map).forEach(function(k) {
+        newK = k.replace(/(\_\w)/g, function(m) { return m[1].toUpperCase() });
+        if (newK != k) {
+          map[newK] = map[k];
+          delete map[k];
+        }
+      });
+    }
+    return map;
+  }
+  
+  var revealHugoDefaults = { center: true, controls: true, history: true, progress: true, transition: "slide" };
+  var revealHugoSiteParams = JSON.parse(document.getElementById('reveal-hugo-site-params').innerHTML);
+  var revealHugoPageParams = JSON.parse(document.getElementById('reveal-hugo-page-params').innerHTML);
+  
+  var options = Object.assign({},
+    camelize(revealHugoDefaults),
+    camelize(revealHugoSiteParams),
+    camelize(revealHugoPageParams));
+  Reveal.initialize(options);
+</script>
+
+<script type="text/javascript" src="/reveal-js/lib/js/classList.js"></script>
+
+
+<script type="text/javascript" src="/reveal-js/plugin/markdown/marked.js"></script>
+
+<script type="text/javascript" src="/reveal-js/plugin/markdown/markdown.js"></script>
+
+<script type="text/javascript" src="/reveal-js/plugin/highlight/highlight.js"></script>
+
+<script type="text/javascript" src="/reveal-js/plugin/zoom-js/zoom.js"></script>
+
+
+<script type="text/javascript" src="/reveal-js/plugin/notes/notes.js"></script>
+
+
+
+<script type="text/javascript">
+if (hljs)
+  hljs.initHighlightingOnLoad();
+</script>
+    
+    
+  </body>
+</html>
