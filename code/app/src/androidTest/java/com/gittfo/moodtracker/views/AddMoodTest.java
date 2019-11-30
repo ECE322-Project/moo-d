@@ -1,13 +1,5 @@
 package com.gittfo.moodtracker.views;
 
-
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
-
-import androidx.test.espresso.ViewInteraction;
 import androidx.test.filters.LargeTest;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.rule.ActivityTestRule;
@@ -15,201 +7,143 @@ import androidx.test.runner.AndroidJUnit4;
 
 import com.gittfo.moodtracker.database.Database;
 
-import org.hamcrest.Description;
-import org.hamcrest.Matcher;
-import org.hamcrest.TypeSafeMatcher;
+import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.testng.reporters.jq.Main;
 
 import static android.content.Context.MODE_PRIVATE;
-import static android.preference.PreferenceManager.getDefaultSharedPreferences;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
-import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class AddMoodTest {
 
-
     @Rule
-    public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<MainActivity>(MainActivity.class, true, true){
+    public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<MainActivity>(MainActivity.class, true, true) {
 
         @Override
-        protected void beforeActivityLaunched(){
+        protected void beforeActivityLaunched() {
             InstrumentationRegistry.getInstrumentation().getTargetContext().getSharedPreferences(Database.PREFS, MODE_PRIVATE)
                     .edit()
-                    .putString("user", "105648403813593449833")
+                    .putString("user", "addmoodtest")
                     .apply();
-
-
         }
     };
 
+    @Before
+    public void setUp() {
+        TestUtil.clickPlusButton();
+    }
+
     @Test
-    public void addDeleteMoodTest() {
+    public void addMoodTest() {
 
+        TestUtil.saveMoodEvent();
 
-        ViewInteraction floatingActionButton = onView(
-                allOf(withId(R.id.fab),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                        0),
-                                2),
-                        isDisplayed()));
-        floatingActionButton.perform(click());
+        TestUtil.pressOkOnDialog();
 
-        ViewInteraction materialButton = onView(
-                allOf(withId(R.id.save_mood_event_button), withText("Save Mood Event"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("android.widget.ScrollView")),
-                                        0),
-                                14)));
-        materialButton.perform(scrollTo(), click());
+        TestUtil.selectHappy();
 
-        ViewInteraction materialButton2 = onView(
-                allOf(withId(android.R.id.button1), withText("OK"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.buttonPanel),
-                                        0),
-                                3)));
-        materialButton2.perform(scrollTo(), click());
+        TestUtil.selectSad();
 
-        ViewInteraction materialButton3 = onView(
-                allOf(withId(R.id.happy_mood_button), withText("HAPPY"),
-                        childAtPosition(
-                                allOf(withId(R.id.mood_selection_buttons),
-                                        childAtPosition(
-                                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                                5)),
-                                0)));
-        materialButton3.perform(scrollTo(), click());
+        TestUtil.selectAfraid();
 
-        ViewInteraction appCompatImageButton = onView(
-                allOf(withId(R.id.exit_button), withContentDescription("Exit Button"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("android.widget.ScrollView")),
-                                        0),
-                                0)));
-        appCompatImageButton.perform(scrollTo(), click());
+        TestUtil.selectSurprised();
 
-        ViewInteraction materialButton4 = onView(
-                allOf(withId(android.R.id.button2), withText("Cancel"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.buttonPanel),
-                                        0),
-                                2)));
-        materialButton4.perform(scrollTo(), click());
+        TestUtil.selectDisgusted();
 
-        ViewInteraction materialButton5 = onView(
-                allOf(withId(R.id.save_mood_event_button), withText("Save Mood Event"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("android.widget.ScrollView")),
-                                        0),
-                                14)));
-        materialButton5.perform(scrollTo(), click());
+        TestUtil.selectAngry();
 
-        ViewInteraction materialButton6 = onView(
-                allOf(withId(android.R.id.button1), withText("OK"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.buttonPanel),
-                                        0),
-                                3)));
-        materialButton6.perform(scrollTo(), click());
+        TestUtil.saveMoodEvent();
 
-        ViewInteraction materialButton7 = onView(
-                allOf(withId(R.id.social_button_zero), withText("0"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.social_situation_buttons),
-                                        0),
-                                0)));
-        materialButton7.perform(scrollTo(), click());
-
-        ViewInteraction materialButton8 = onView(
-                allOf(withId(R.id.save_mood_event_button), withText("Save Mood Event"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("android.widget.ScrollView")),
-                                        0),
-                                14)));
-        materialButton8.perform(scrollTo(), click());
-
-        ViewInteraction delete_button = onView(
-                allOf(withId(R.id.delete_button), withContentDescription("delete button"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("android.widget.LinearLayout")),
-                                        0),
-                                6),
-                        isDisplayed()));
-        delete_button.perform(click());
-
-        ViewInteraction cancel_delete = onView(
-                allOf(withId(android.R.id.button2), withText("Cancel"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.buttonPanel),
-                                        0),
-                                2)));
-        cancel_delete.perform(scrollTo(), click());
-
-        ViewInteraction deleteButton = onView(
-                allOf(withId(R.id.delete_button), withContentDescription("delete button"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("android.widget.LinearLayout")),
-                                        0),
-                                6),
-                        isDisplayed()));
-        deleteButton.perform(click());
-
-        ViewInteraction confirmDelete = onView(
-                allOf(withId(android.R.id.button1), withText("OK"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.buttonPanel),
-                                        0),
-                                3)));
-        confirmDelete.perform(scrollTo(), click());
-
+        // TODO check position in RecyclerView
+        // https://developer.android.com/reference/android/support/test/espresso/contrib/RecyclerViewActions
+        onView(allOf(withId(R.id.user_mood_textView), withText("ANGRY"), isDisplayed()));
     }
 
-    private static Matcher<View> childAtPosition(
-            final Matcher<View> parentMatcher, final int position) {
+    @Test
+    public void addMoodWithCommentTest() {
 
-        return new TypeSafeMatcher<View>() {
-            @Override
-            public void describeTo(Description description) {
-                description.appendText("Child at position " + position + " in parent ");
-                parentMatcher.describeTo(description);
-            }
+        TestUtil.selectHappy();
 
-            @Override
-            public boolean matchesSafely(View view) {
-                ViewParent parent = view.getParent();
-                return parent instanceof ViewGroup && parentMatcher.matches(parent)
-                        && view.equals(((ViewGroup) parent).getChildAt(position));
-            }
-        };
+        TestUtil.enterComment("Test Comment");
+
+        TestUtil.saveMoodEvent();
+
+        // TODO check position in RecyclerView
+        // https://developer.android.com/reference/android/support/test/espresso/contrib/RecyclerViewActions
+        onView(allOf(withId(R.id.user_mood_textView), withText("HAPPY"), isDisplayed()));
+        onView(allOf(withId(R.id.user_reason_textView), withText("Test Comment"), isDisplayed()));
     }
+
+    @Test
+    public void addMoodWithZeroPeople() {
+
+        TestUtil.selectSad();
+
+        // click the other buttons
+        onView(allOf(withId(R.id.social_button_zero), withText("0"))).perform(scrollTo(), click());
+        onView(allOf(withId(R.id.social_button_one), withText("1"))).perform(scrollTo(), click());
+        onView(allOf(withId(R.id.social_button_two_plus), withText("2+"))).perform(scrollTo(), click());
+        onView(allOf(withId(R.id.social_button_crowd), withText("A CROWD"))).perform(scrollTo(), click());
+        onView(allOf(withId(R.id.social_button_na), withText("N/A"))).perform(scrollTo(), click());
+
+        onView(allOf(withId(R.id.social_button_zero), withText("0"))).perform(scrollTo(), click());
+
+        TestUtil.saveMoodEvent();
+
+        // TODO check position in RecyclerView
+        // https://developer.android.com/reference/android/support/test/espresso/contrib/RecyclerViewActions
+        onView(allOf(withId(R.id.num_people_textView), withText("zero"), isDisplayed()));
+        onView(allOf(withId(R.id.user_mood_textView), withText("SAD"), isDisplayed()));
+    }
+
+    // TODO
+//    @Test
+//    public void addMoodWithPhotoTest(){
+//        selectAfraid();
+//        // https://developer.android.com/training/testing/espresso/intents
+//
+//    }
+
+    @Test
+    public void addMoodWithLocation() {
+
+        TestUtil.selectSurprised();
+
+        onView(allOf(
+                withId(R.id.location_button),
+                withText("Attach Current Location (optional)"))
+        ).perform(scrollTo(), click());
+
+        TestUtil.saveMoodEvent();
+
+        // TODO check position in RecyclerView
+        // https://developer.android.com/reference/android/support/test/espresso/contrib/RecyclerViewActions
+        onView(allOf(withId(R.id.user_mood_textView), withText("SURPRISED"), isDisplayed()));
+        onView(allOf(withId(R.id.location_textView), withText(not("NaN, NaN")), isDisplayed()));
+    }
+
+    @After
+    public void deleteMood() {
+        TestUtil.deleteMood();
+    }
+
+    @BeforeClass
+    @AfterClass
+    public static void cleanUp() {
+        TestUtil.cleanUp("addmoodtest");
+    }
+
 }

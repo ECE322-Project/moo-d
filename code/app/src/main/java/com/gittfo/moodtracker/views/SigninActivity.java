@@ -4,13 +4,16 @@ import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.gittfo.moodtracker.database.Database;
+
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 /**
@@ -21,14 +24,18 @@ import com.google.android.gms.tasks.Task;
 public class SigninActivity extends AppCompatActivity {
     private static final int RC_SIGN_IN = 1;
     GoogleSignInClient mGoogleSignInClient;
+    private static int DEFAULT_THEME_ID = R.style.AppTheme;
 
     /**
-     * In the oncreate method, create the signin client
+     * In the onCreate method, create the signin client
      *
      * @param savedInstanceState
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(DEFAULT_THEME_ID);
+
+        Log.d("Aout", "Hit on create");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -37,6 +44,9 @@ public class SigninActivity extends AppCompatActivity {
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         findViewById(R.id.sign_in_button).setOnClickListener(v -> signIn());
+
+        // Hide the ActionBar
+        getSupportActionBar().hide();
     }
 
     /**
@@ -46,10 +56,26 @@ public class SigninActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        Log.d("Aout", "getting last google account");
+
+        Intent intent = getIntent();
+        if (intent.getBooleanExtra("sign out?", false)){
+            signOut();
+        }
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         if (account != null) {
             finalizeSignIn(account);
         }
+    }
+
+    private void signOut() {
+        mGoogleSignInClient.signOut()
+                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(Task<Void> task) {
+                        Log.d("Aout", "Signed out");
+                    }
+                });
     }
 
     /**
@@ -102,10 +128,13 @@ public class SigninActivity extends AppCompatActivity {
                     .edit()
                     .putString("user", account.getId())
                     .apply();
+            Database.get(this).init();
 
-            // Start main activity
-            Intent startApp = new Intent(this, MainActivity.class);
-            this.startActivity(startApp);
+            Database.get(this).getUserName(name -> {
+                // Start the actual app (possibly set a username first)
+                Intent startApp = new Intent(this, name != null ? MainActivity.class : ChangeUsernameActivity.class);
+                this.startActivity(startApp);
+            });
         } else {
             // TODO: Notify User
             this.recreate();

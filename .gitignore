@@ -2,3 +2,5 @@
 .gitsecret/keys/random_seed
 !*.secret
 code/app/google-services.json
+code/server/key.json
+firebase-debug.log*

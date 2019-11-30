@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#9E75FF</color>
+    <color name="colorPrimaryDark">#069784</color>
+    <color name="colorAccent">#728EEB</color>
+
+
+    <color name="colorToolbar">#3F98C0</color>
+    <color name="colorButton">#9973FF</color>
+    <color name="colorBottomAppBar">#3F98C0</color>
+    <color name="colorFloatingActionButton">#51D6BB</color>
+    <color name="colorSecondary">#ED5AB4</color>
 
     <color name="colorHappy">#81c784</color>
     <color name="colorSad">#64b5f6</color>
@@ -17,5 +24,14 @@
     <color name="colorEmoticonAfraid">#ff9800</color>
     <color name="colorEmoticonDisgusted">#a58ad4</color>
     <color name="colorEmoticonAngry">#ff6332</color>
+
+
+    <color name="colorDefaultThemeButton">#3F98C0</color>
+    <color name="colorNeonThemeButton">#13CA91</color>
+    <color name="colorPastelThemeButton">#A2D1F1</color>
+    <color name="colorMonochromeThemeButton">#9BA3A7</color>
+    <color name="colorDarkTheme1Button">#2F2F30</color>
+    <color name="colorDarkTheme2Button">#2F2F41</color>
+
 
 </resources>

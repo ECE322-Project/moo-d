@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="colorToolbar" format="reference|color" />
+    <attr name="colorButton" format="reference|color" />
+
+    <attr name="colorBottomAppBar" format="reference|color"/>
+    <attr name="colorFloatingActionButton" format="reference|color"/>
+    <attr name="colorSecondary" format="reference|color"/>
+    <attr name="colorDominantText" format="reference|color"/>
+    <attr name="colorImageButtonTint" format="reference|color"/>
+    <attr name="colorDefaultText" format="reference|color"/>
+    <attr name="colorDefaultBackground" format="reference|color"/>
+    <attr name="colorContainerImageButton" format="reference|color"/>
+    <attr name="colorSecondaryText" format="reference|color"/>
+
+</resources>

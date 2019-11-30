@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorDefaultBackground">
+
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/toolbar_inbox" />
+
+    <include
+        android:id="@id/bottom_app_bar_layout"
+        layout="@layout/bottom_app_bar" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/inbox_items_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="64dp"
+        android:layout_marginTop="?attr/actionBarSize">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

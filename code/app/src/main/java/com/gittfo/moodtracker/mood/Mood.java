@@ -7,11 +7,13 @@ import androidx.annotation.DrawableRes;
 
 import com.gittfo.moodtracker.views.R;
 
+import java.io.Serializable;
+
 /**
  * Represents the notion of a 'Mood' for our mood tracker app. Stores both information related to
  * the state of a mood (i.e. emotion) and the representation of a mood (i.e. color, emoticon).
  */
-public class Mood {
+public class Mood implements Serializable {
 
     /**
      * The list of possible emotional states a user can choose for their moods.
@@ -24,31 +26,23 @@ public class Mood {
         AFRAID,
         DISGUSTED,
         ANGRY,
-    };
+    }
 
-    // Filename of emoticon representing this mood
-    private @DrawableRes int emoticon;
+    private @DrawableRes int emoticon; // Filename of emoticon representing this mood
 
-    // Enum holding the "emotional state" this mood represents
-    private EmotionalState emotionalState;
+    private String name; // A String containing the name of the mood
 
-    // A String containing the name of the mood
-    private String name;
-
-    // A color for the mood, stored as an int
-    private int color;
+    private int color; // A color for the mood, stored as an int
 
     /**
      * Creates a new mood
      *
      * @param emoticon       Filename of the icon representing this mood.
-     * @param emotionalState Enum describing the emotional state of this mood
      * @param name           A String containing the name of the mood
      * @param color          A color for the mood
      */
-    public Mood(@DrawableRes int emoticon, EmotionalState emotionalState, String name, int color) {
+    public Mood(@DrawableRes int emoticon, String name, int color) {
         this.emoticon = emoticon;
-        this.emotionalState = emotionalState;
         this.name = name;
         this.color = color;
     }
@@ -79,14 +73,13 @@ public class Mood {
      */
     public static Mood moodFromEmotionalState(EmotionalState emotionalState) {
         switch (emotionalState) {
-            case HAPPY: return DEFAULT_HAPPY;
             case SAD: return DEFAULT_SAD;
             case ANGRY: return DEFAULT_ANGRY;
             case AFRAID: return DEFAULT_AFRAID;
             case DISGUSTED: return DEFAULT_DISGUSTED;
             case SURPRISED: return DEFAULT_SURPRISED;
+            default: return DEFAULT_HAPPY;
         }
-        return null;
     }
 
     /**
@@ -96,15 +89,6 @@ public class Mood {
      */
     public @DrawableRes int getEmoticon() {
         return emoticon;
-    }
-
-    /**
-     * Return the valid emotional state that this mood represents.
-     *
-     * @return An enum describing the emotional state of this mood.
-     */
-    public EmotionalState getEmotionalState() {
-        return emotionalState;
     }
 
     /**
@@ -126,16 +110,16 @@ public class Mood {
     }
 
     // Pre-defined mood objects
-    public static Mood DEFAULT_HAPPY = new Mood(R.drawable.ic_happy_icon_24dp, Mood.EmotionalState.HAPPY,
+    public static Mood DEFAULT_HAPPY = new Mood(R.drawable.ic_happy_icon_24dp,
             "Happy", Color.parseColor("#81c784"));
-    public static Mood DEFAULT_SAD = new Mood(R.drawable.ic_sad_icon_24dp, EmotionalState.SAD,
+    public static Mood DEFAULT_SAD = new Mood(R.drawable.ic_sad_icon_24dp,
             "Sad", Color.parseColor("#64b5f6"));
-    public static Mood DEFAULT_SURPRISED = new Mood(R.drawable.ic_surprised_icon_24dp, EmotionalState.SURPRISED,
+    public static Mood DEFAULT_SURPRISED = new Mood(R.drawable.ic_surprised_icon_24dp,
             "Surprised", Color.parseColor("#fff176"));
-    public static Mood DEFAULT_AFRAID = new Mood(R.drawable.ic_afraid_icon_24dp, EmotionalState.AFRAID,
+    public static Mood DEFAULT_AFRAID = new Mood(R.drawable.ic_afraid_icon_24dp,
             "Afraid", Color.parseColor("#ffb74d"));
-    public static Mood DEFAULT_DISGUSTED = new Mood(R.drawable.ic_disgusted_icon_24dp, EmotionalState.DISGUSTED,
+    public static Mood DEFAULT_DISGUSTED = new Mood(R.drawable.ic_disgusted_icon_24dp,
             "Disgusted", Color.parseColor("#b39ddb"));
-    public static Mood DEFAULT_ANGRY = new Mood(R.drawable.ic_angry_icon_24dp, EmotionalState.ANGRY,
+    public static Mood DEFAULT_ANGRY = new Mood(R.drawable.ic_angry_icon_24dp,
             "Angry", Color.parseColor("#ff8a65"));
 }

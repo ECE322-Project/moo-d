@@ -1,11 +1,13 @@
 package com.gittfo.moodtracker;
 
 import com.gittfo.moodtracker.mood.Mood;
+import com.gittfo.moodtracker.views.R;
 
 import org.junit.Test;
 
 import static com.gittfo.moodtracker.mood.Mood.emotionalStateFromString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 /**
  * Test the Mood class.
@@ -100,5 +102,27 @@ public class MoodTest {
         // Given an emotional state, obtain the correct default mood
         Mood mood = Mood.moodFromEmotionalState(emotionalState);
         assertEquals(mood, Mood.DEFAULT_ANGRY);
+    }
+
+    // Test mood class getters and setters
+    @Test
+    public void getterAndSetterTests(){
+
+        Mood testMood = new Mood(
+                R.drawable.ic_happy_icon_24dp,
+                "test_mood_name",
+                0
+        );
+
+
+        assertEquals(testMood.getColor(), 0);
+        assertEquals(testMood.getName(), "test_mood_name");
+        assertEquals(testMood.getEmoticon(), R.drawable.ic_happy_icon_24dp);
+    }
+
+    // Test Mood classes static methods
+    @Test
+    public void testMoodStaticMethods(){
+        assertNull(Mood.emotionalStateFromString("invalid"));
     }
 }

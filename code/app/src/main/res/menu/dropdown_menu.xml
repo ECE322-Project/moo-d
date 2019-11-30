@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/dropdown_one"
+        android:title="Change username"/>
+
+    <item
+        android:id="@+id/dropdown_two"
+        android:title="Change color scheme"/>
+
+    <item
+        android:id="@+id/dropdown_three"
+        android:title="Sign out"/>
+
+</menu>

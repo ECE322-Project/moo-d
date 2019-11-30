@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".map.MapActivity"
+    android:background="?attr/colorDefaultBackground">
+
+    <!-- Include Maps toolbar -->
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/toolbar_map"/>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/map_screen_contents"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="100dp"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/navbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tool_bar">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="2dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <!-- "My Locations" button -->
+
+            <Button
+                android:id="@+id/my_locations_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onMyLocations"
+                android:text="My Locations"
+                android:backgroundTint="?attr/colorButton"
+                android:textColor="?attr/colorDominantText"
+                android:layout_marginEnd="5dp"/>
+
+            <!-- "Followed User Locations" button -->
+
+            <Button
+                android:id="@+id/followed_locations_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onFolloweeLocations"
+                android:text="Followed User Locations"
+                android:backgroundTint="?attr/colorButton"
+                android:textColor="?attr/colorDominantText"
+                android:layout_marginStart="5dp"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/map_linear_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            app:layout_goneMarginTop="30dp"
+
+            android:background="@drawable/border"
+
+            android:layout_weight="0.74">
+
+            <fragment
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/mood_map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.gittfo.moodtracker.views.map.MapActivity" >
+            </fragment>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <!-- Mood item corresponding to a given location on the map -->
+
+        <LinearLayout
+            android:id="@+id/mood_item_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+
+            android:layout_weight="0.2">
+            
+            <include
+                android:id="@id/map_mood_item"
+                layout="@layout/map_mood_event_item" />
+        </LinearLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <!-- Include Bottom App Bar -->
+    <include
+        android:id="@+id/navbar"
+        layout="@layout/bottom_app_bar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

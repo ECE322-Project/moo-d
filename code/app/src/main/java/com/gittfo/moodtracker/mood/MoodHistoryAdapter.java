@@ -5,9 +5,11 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.util.Log;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.view.LayoutInflater;
 
@@ -15,7 +17,6 @@ import android.view.LayoutInflater;
 import com.gittfo.moodtracker.database.Database;
 import com.gittfo.moodtracker.views.R;
 import com.gittfo.moodtracker.views.addmood.AddMoodEventActivity;
-import com.gittfo.moodtracker.views.moodhistory.MoodViewHolder;
 
 import java.util.ArrayList;
 
@@ -26,15 +27,17 @@ public class MoodHistoryAdapter extends RecyclerView.Adapter<MoodViewHolder> {
 
     private ArrayList<MoodEvent> moodHistory;
     private Context context;
+    private int layout_type;
 
     /**
      * Create a new MoodHistoryAdapter.
      *
      * @param moodHistory The MoodHistory that this adapter will hold
      */
-    public MoodHistoryAdapter(Context context, ArrayList<MoodEvent> moodHistory){
+    public MoodHistoryAdapter(Context context, ArrayList<MoodEvent> moodHistory, int layout_type){
         this.moodHistory = moodHistory;
         this.context = context;
+        this.layout_type = layout_type;
     }
 
     /**
@@ -48,7 +51,7 @@ public class MoodHistoryAdapter extends RecyclerView.Adapter<MoodViewHolder> {
     @Override
     public MoodViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LinearLayout v = (LinearLayout) LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.mood_event, parent, false);
+                .inflate(this.layout_type, parent, false);
 
         return new MoodViewHolder(v);
     }
@@ -63,29 +66,51 @@ public class MoodHistoryAdapter extends RecyclerView.Adapter<MoodViewHolder> {
      */
     @Override
     public void onBindViewHolder(final MoodViewHolder holder, int position) {
-        // - get element from your dataset at this position
-        // - replace the contents of the view with that element
-        //holder.container.setText(mDataset[position]);
-        holder.populateMoodEventContainer(moodHistory.get(position));
-        holder.container.findViewById(R.id.edit_button).setOnClickListener(v -> {
-            //Context c = moodHistory.getContext();
-            Intent i = new Intent(context, AddMoodEventActivity.class);
-            i.putExtra(AddMoodEventActivity.EDIT_MOOD, holder.moodEventID);
-            context.startActivity(i);
-        });
-        holder.container.findViewById(R.id.delete_button).setOnClickListener(v -> {
-            new AlertDialog.Builder(context)
-                    .setTitle("Delete Mood")
-                    .setMessage("Do you really want to delete this Mood Event?")
-                    .setIcon(android.R.drawable.ic_dialog_alert)
-                    .setPositiveButton(android.R.string.yes, (dialog, whichButton) -> {
-                                Database.get(context).deleteMoodEvent(MoodEvent.fromId(holder.moodEventID));
-                                moodHistory.remove(position); 
-                                notifyDataSetChanged();
-                            }
-                    )
-                    .setNegativeButton(android.R.string.no, null).show();
-        });
+        MoodEvent current = moodHistory.get(position);
+        holder.populateMoodEventContainer(current);
+
+        ImageView moodEventImage = holder.container.findViewById(R.id.user_image);
+        if (current.getPhotoReference() != null && !current.getPhotoReference().equals("")) {
+            Database.get(holder.container.getContext()).downloadImage(current.getPhotoReference(), image -> {
+                if (image != null) {
+                    // If the MoodEvent has a user-provided photo
+                    Log.d("JUI", "Got an Image for mood: "+ current.toString());
+                    final int scaledHeight = 150;
+                    int scaledWidth = (int) (((double)scaledHeight) / ((double)image.getHeight()) * ((double)image.getWidth()));
+                    moodEventImage.setImageBitmap(
+                            Bitmap.createScaledBitmap(image, scaledWidth, scaledHeight, false)
+                    );
+
+                }
+            });
+        } else {
+            // If the MoodEvent doesn't have a user-provided photo
+            moodEventImage.setImageResource(android.R.color.transparent);
+        }
+
+
+        if(this.layout_type == R.layout.mood_event_profile){
+            holder.container.findViewById(R.id.edit_button).setOnClickListener(v -> {
+                //Context c = moodHistory.getContext();
+                Intent i = new Intent(context, AddMoodEventActivity.class);
+                i.putExtra(AddMoodEventActivity.EDIT_MOOD, holder.moodEventID);
+                context.startActivity(i);
+            });
+            holder.container.findViewById(R.id.delete_button).setOnClickListener(v -> {
+                new AlertDialog.Builder(context)
+                        .setTitle("Delete Mood")
+                        .setMessage("Do you really want to delete this Mood Event?")
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setPositiveButton(android.R.string.yes, (dialog, whichButton) -> {
+                                    Database.get(context).deleteMoodEvent(MoodEvent.fromId(holder.moodEventID));
+                                    moodHistory.remove(position);
+                                    notifyDataSetChanged();
+                                }
+                        )
+                        .setNegativeButton(android.R.string.no, null).show();
+            });
+        }
+
     }
 
     /**

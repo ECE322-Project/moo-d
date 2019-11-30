@@ -8,7 +8,12 @@
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
+    <meta-data
+        android:name="com.google.android.gms.version"
+        android:value="@integer/google_play_services_version" />
 
     <application
         android:allowBackup="true"
@@ -17,11 +22,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
 
+
         tools:ignore="GoogleAppIndexingWarning"
         android:theme="@style/AppTheme">
 
         <activity android:name=".MainActivity" android:screenOrientation="portrait" />
         <activity android:name=".addmood.AddMoodEventActivity" />
+        <activity android:name=".map.MapActivity" />
 
         <activity
             android:name=".SigninActivity">
@@ -30,6 +37,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity android:name=".InboxActivity" />
+        <activity android:name=".ChangeUsernameActivity" />
+        <activity android:name=".TimelineActivity" />
     </application>
 
 </manifest>

@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- This is a mood event for the USER. For mood events for followed users, refer to
+    mood_event_timeline.xml -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="15dp"
+    android:background="?attr/colorDefaultBackground">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/color_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:padding="8dp"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <!-- Emoticon representing user's mood -->
+
+        <ImageView
+            android:id="@+id/user_emotion_imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="user mood icon"
+
+            android:src="@drawable/ic_happy_icon_24dp"
+            android:tint="@color/colorEmoticonHappy"
+
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <!-- User name, colored and bolded -->
+
+        <TextView
+            android:id="@+id/user_name_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="moo_d_user"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+
+            app:layout_constraintBottom_toBottomOf="@id/user_emotion_imageView"
+            app:layout_constraintStart_toEndOf="@id/user_emotion_imageView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <!-- "is feeling" text -->
+
+        <TextView
+            android:id="@+id/is_feeling_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="is feeling"
+            android:textColor="?attr/colorDefaultText"
+            app:layout_constraintBottom_toBottomOf="@id/user_emotion_imageView"
+
+            app:layout_constraintStart_toEndOf="@id/user_name_textView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <!-- user mood text, colored and bolded (color should reflect mood color) -->
+
+        <TextView
+            android:id="@+id/user_mood_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginRight="2dp"
+            android:text="happy"
+
+
+            android:textColor="@color/colorEmoticonHappy"
+            android:textStyle="bold"
+
+            app:layout_constraintBottom_toBottomOf="@id/user_emotion_imageView"
+            app:layout_constraintStart_toEndOf="@id/is_feeling_textView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <!-- period, just to keep from having to set text for user_mood_textView to "<mood>." -->
+
+        <TextView
+            android:id="@+id/text_period_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="."
+            android:textColor="?attr/colorDefaultText"
+            app:layout_constraintBottom_toBottomOf="@id/user_emotion_imageView"
+
+            app:layout_constraintStart_toEndOf="@id/user_mood_textView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <!-- EDIT BUTTON -->
+
+        <ImageButton
+            android:id="@+id/edit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/delete_button"
+            app:layout_constraintTop_toTopOf="@id/delete_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/delete_button"
+            android:layout_marginLeft="5dp"
+
+            android:contentDescription="edit mood button"
+            android:background="?attr/colorDefaultBackground"
+            android:tint="?attr/colorContainerImageButton"
+            android:src="@drawable/ic_edit_gray_24dp"/>
+
+        <!-- DELETE BUTTON -->
+
+        <ImageButton
+            android:id="@+id/delete_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/edit_button"
+            app:layout_constraintTop_toTopOf="@id/user_mood_textView"
+            app:layout_constraintEnd_toStartOf="@id/edit_button"
+
+            android:contentDescription="delete button"
+            android:background="?attr/colorDefaultBackground"
+            android:tint="?attr/colorContainerImageButton"
+            android:src="@drawable/ic_delete_gray_24dp"/>
+
+
+
+
+        <!-- DATE AND TIME INFO -->
+
+        <TextView
+            android:id="@+id/date_time_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="5dp"
+
+            android:textColor="?attr/colorSecondaryText"
+            android:text="November 02, 2019 at 1:22 PM"
+            android:textSize="12dp"
+
+            app:layout_constraintStart_toStartOf="@id/user_emotion_imageView"
+            app:layout_constraintTop_toBottomOf="@id/user_emotion_imageView" />
+
+
+        <!-- NUMBER OF PEOPLE -->
+
+        <ImageView
+            android:id="@+id/num_people_imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:contentDescription="social icon"
+            android:src="@drawable/ic_activity_people_black_24dp"
+            android:background="?attr/colorDefaultBackground"
+            android:tint="?attr/colorContainerImageButton"
+
+            app:layout_constraintStart_toStartOf="@id/date_time_textView"
+            app:layout_constraintTop_toBottomOf="@id/date_time_textView" />
+
+        <TextView
+            android:id="@+id/num_people_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:text="A crowd"
+            android:textColor="?attr/colorDefaultText"
+            android:textSize="12dp"
+
+            app:layout_constraintBottom_toBottomOf="@id/num_people_imageView"
+            app:layout_constraintStart_toEndOf="@id/num_people_imageView"
+            app:layout_constraintTop_toTopOf="@id/num_people_imageView" />
+
+
+        <!-- LOCATION -->
+
+        <ImageView
+            android:id="@+id/location_icon_imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:contentDescription="location icon"
+            android:src="@drawable/ic_near_me_black_24dp"
+            app:layout_constraintBottom_toBottomOf="@id/num_people_imageView"
+
+            android:background="?attr/colorDefaultBackground"
+            android:tint="?attr/colorContainerImageButton"
+            app:layout_constraintStart_toEndOf="@id/num_people_textView"
+            app:layout_constraintTop_toTopOf="@id/num_people_imageView" />
+
+        <TextView
+            android:id="@+id/location_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="University of Alberta"
+            android:textColor="?attr/colorDefaultText"
+            android:textSize="12dp"
+
+            app:layout_constraintBottom_toBottomOf="@id/location_icon_imageView"
+            app:layout_constraintStart_toEndOf="@id/location_icon_imageView"
+            app:layout_constraintTop_toTopOf="@id/location_icon_imageView" />
+
+
+        <!-- USER COMMENT -->
+
+        <TextView
+            android:id="@+id/user_reason_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Bought drawing supplies"
+            android:textColor="?attr/colorDefaultText"
+
+            android:textSize="13dp"
+            android:textStyle="italic"
+            app:layout_constraintStart_toStartOf="@id/num_people_imageView"
+            app:layout_constraintTop_toBottomOf="@id/num_people_imageView" />
+
+
+        <!-- USER PHOTO -->
+
+        <ImageView
+            android:id="@+id/user_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintTop_toBottomOf="@id/delete_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/location_textView"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="10dp"
+            android:layout_gravity="center"
+            app:layout_constraintDimensionRatio="1:1"
+
+
+
+            android:src="@drawable/ic_image_black_64dp"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

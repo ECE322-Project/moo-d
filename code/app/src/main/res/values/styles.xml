@@ -1,11 +1,134 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">#9E75FF</item>
+        <item name="colorPrimaryDark">#00574B</item>
+        <item name="colorSecondary">#ED5AB4</item>
+        <item name="colorAccent">#728EEB</item>
+
+        <item name="colorToolbar">#3F98C0</item>
+        <item name="colorButton">#9973FF</item>
+        <item name="colorBottomAppBar">#3F98C0</item>
+        <item name="colorFloatingActionButton">#51D6BB</item>
+
+        <item name="colorDominantText">#FFFFFF</item>
+        <item name="colorImageButtonTint">#505050</item>
+        <item name="colorDefaultText">#000000</item>
+        <item name="colorDefaultBackground">#FFFFFF</item>
+        <item name="colorContainerImageButton">#495054</item>
+        <item name="colorSecondaryText">#585858</item>
     </style>
+
+    <!-- Neon application theme. -->
+    <style name="NeonTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#9E75FF</item>
+        <item name="colorPrimaryDark">#00574B</item>
+        <item name="colorSecondary">#ED5AB4</item>
+        <item name="colorAccent">#728EEB</item>
+
+        <item name="colorToolbar">#13CA91</item>
+        <item name="colorButton">#FF85EA</item>
+        <item name="colorBottomAppBar">#13CA91</item>
+        <item name="colorFloatingActionButton">#AE8DF8</item>
+
+        <item name="colorDominantText">#FFFFFF</item>
+        <item name="colorImageButtonTint">#FDF200</item>
+        <item name="colorDefaultText">#000000</item>
+        <item name="colorDefaultBackground">#FFFFFF</item>
+        <item name="colorContainerImageButton">#495054</item>
+        <item name="colorSecondaryText">#585858</item>
+    </style>
+
+    <!-- Pastel application theme. -->
+    <style name="PastelTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#9E75FF</item>
+        <item name="colorPrimaryDark">#00574B</item>
+        <item name="colorSecondary">#ED5AB4</item>
+        <item name="colorAccent">#728EEB</item>
+
+        <item name="colorToolbar">#68BAF1</item>
+        <item name="colorButton">#86D19F</item>
+        <item name="colorBottomAppBar">#68BAF1</item>
+        <item name="colorFloatingActionButton">#C6BDEA</item>
+
+        <item name="colorDominantText">#FFFFFF</item>
+        <item name="colorImageButtonTint">#FFFFFF</item>
+        <item name="colorDefaultText">#000000</item>
+        <item name="colorDefaultBackground">#FFFFFF</item>
+        <item name="colorContainerImageButton">#495054</item>
+        <item name="colorSecondaryText">#585858</item>
+    </style>
+
+    <!-- Monochrome application theme. -->
+    <style name="MonochromeTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#9E75FF</item>
+        <item name="colorPrimaryDark">#00574B</item>
+        <item name="colorSecondary">#ED5AB4</item>
+        <item name="colorAccent">#728EEB</item>
+
+        <item name="colorToolbar">#495054</item>
+        <item name="colorButton">#9ba8ae</item>
+        <item name="colorBottomAppBar">#495054</item>
+        <item name="colorFloatingActionButton">#707a7e</item>
+
+        <item name="colorDominantText">#FFFFFF</item>
+        <item name="colorImageButtonTint">#FFFFFF</item>
+        <item name="colorDefaultText">#000000</item>
+        <item name="colorDefaultBackground">#FFFFFF</item>
+        <item name="colorContainerImageButton">#495054</item>
+        <item name="colorSecondaryText">#585858</item>
+
+    </style>
+
+    <!-- Dark 1 application theme. -->
+
+    <style name="DarkTheme1" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#9E75FF</item>
+        <item name="colorPrimaryDark">#00574B</item>
+        <item name="colorSecondary">#ED5AB4</item>
+        <item name="colorAccent">#728EEB</item>
+
+        <item name="colorToolbar">#4C4066</item>
+        <item name="colorButton">#9973FF</item>
+        <item name="colorBottomAppBar">#4C4066</item>
+        <item name="colorFloatingActionButton">#3D9684</item>
+
+        <item name="colorDominantText">#FFFFFF</item>
+        <item name="colorImageButtonTint">#D1D0D0</item>
+        <item name="colorDefaultText">#DFDEDE</item>
+        <item name="colorDefaultBackground">#2F2F30</item>
+        <item name="colorContainerImageButton">#BCBCBE</item>
+        <item name="colorSecondaryText">#C2C1C1</item>
+    </style>
+
+    <!-- Dark 2 application theme. -->
+
+    <style name="DarkTheme2" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#9E75FF</item>
+        <item name="colorPrimaryDark">#00574B</item>
+        <item name="colorSecondary">#ED5AB4</item>
+        <item name="colorAccent">#728EEB</item>
+
+        <item name="colorToolbar">#2F585C</item>
+        <item name="colorButton">#785ACA</item>
+        <item name="colorBottomAppBar">#2F585C</item>
+        <item name="colorFloatingActionButton">#389280</item>
+
+        <item name="colorDominantText">#FFFFFF</item>
+        <item name="colorImageButtonTint">#D1D0D0</item>
+        <item name="colorDefaultText">#DFDEDE</item>
+        <item name="colorDefaultBackground">#2F2F41</item>
+        <item name="colorContainerImageButton">#BCBCBE</item>
+        <item name="colorSecondaryText">#C2C1C1</item>
+    </style>
+
+
 
 </resources>

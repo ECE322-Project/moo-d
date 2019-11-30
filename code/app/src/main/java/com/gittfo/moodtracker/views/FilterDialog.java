@@ -19,8 +19,8 @@ import java.util.Arrays;
 public class FilterDialog {
     private AlertDialog filterDialog;
     private boolean[] filterState;
-    Activity c;
-    int selectedCount = 0;
+    private Activity c;
+    private int selectedCount = 0;
 
     /**
      * Create a new FilterDialog object
@@ -34,8 +34,7 @@ public class FilterDialog {
         LayoutInflater inflater = c.getLayoutInflater();
 
 
-        builder.setView(inflater.inflate(R.layout.mood_filter, null));
-        builder.setTitle("Filter Moods");
+        builder.setView(inflater.inflate(R.layout.dialog_filter, null));
         Log.d("JUI", "Making builder");
         filterDialog = builder.create();
     }
@@ -182,6 +181,9 @@ public class FilterDialog {
         return this.filterState[ordinal];
     }
 
+    /**
+     * Set all of the filters to true (i.e. display all moods)
+     */
     public void setAllSet() {
         for (int i = 0; i < 6; i++){
             filterState[i] = true;
